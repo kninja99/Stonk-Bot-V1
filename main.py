@@ -1,3 +1,4 @@
+from os import closerange
 from bs4 import BeautifulSoup
 import requests
 import time
@@ -30,7 +31,21 @@ soup1 = BeautifulSoup(html_text, "lxml")
 news_article = soup1.findAll(
     'li', class_='js-stream-content Pos(r)')
 
-# FOR TESTING
-print(news_article[0].text)
+# list containing back end of links aka HREFS
+yahoo_links = []
+# hrefs added to this link to get ful url
+yahoo_base_link = "https://finance.yahoo.com"
+
+# for loop that finds the href and builds full links for yahoo
+for articles in news_article:
+    temp_link = articles.find('a', href=True)
+    yahoo_links.append(yahoo_base_link + temp_link['href'])
+
+
+# for testing
+for text in yahoo_links:
+    print(text)
+    print("\n\n")
+
 
 # grab links to news areticals next
