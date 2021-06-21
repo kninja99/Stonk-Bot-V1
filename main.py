@@ -1,7 +1,12 @@
+import eel
 from os import closerange
 from bs4 import BeautifulSoup
 import requests
 import time
+
+# gui start command
+eel.init('Stonk-Bot-V1/web')
+eel.start('index.html')
 
 
 # user inputs
