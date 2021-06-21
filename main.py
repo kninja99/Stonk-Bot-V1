@@ -5,7 +5,7 @@ import requests
 import time
 
 # gui start command
-eel.init('Stonk-Bot-V1/web')
+eel.init('web')
 eel.start('index.html')
 
 
