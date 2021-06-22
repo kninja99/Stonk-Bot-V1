@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import time
 
+
 # points eel to the directors where html file is
 eel.init('web')
 
@@ -12,7 +13,7 @@ eel.init('web')
 ticker_apple = 'aapl'
 yahoo_base = "https://finance.yahoo.com/quote/"
 # sends tickers to uppers
-ticker_apple.upper()
+ticker_apple = ticker_apple.upper()
 
 # program will search said website for ticker
 #                                 ticker?=ticker.tsrc=fin-srch
