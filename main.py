@@ -4,9 +4,8 @@ from bs4 import BeautifulSoup
 import requests
 import time
 
-# gui start command
+# points eel to the directors where html file is
 eel.init('web')
-eel.start('index.html')
 
 
 # user inputs
@@ -51,6 +50,9 @@ for articles in news_article:
 for text in yahoo_links:
     print(text)
     print("\n\n")
+
+# starts the eel program
+eel.start('index.html')
 
 
 # grab links to news areticals next
