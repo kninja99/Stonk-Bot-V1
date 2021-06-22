@@ -23,7 +23,7 @@ body {
   padding-top: 5px;
   text-indent: 30px;
   list-style: none;
-  background-color: #444444;
+  background-color:rgba(68, 68, 68, .4) ;
 }
 
 .articles li {
