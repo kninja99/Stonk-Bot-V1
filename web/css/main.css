@@ -1,5 +1,5 @@
 :root {
-  --background: #121212;
+  --background: #191919;
   --text_color: white;
 }
 
@@ -23,7 +23,7 @@ body {
   padding-top: 5px;
   text-indent: 30px;
   list-style: none;
-  background-color:rgba(68, 68, 68, .4) ;
+  background-color: rgba(68, 68, 68, 0.4);
 }
 
 .articles li {
