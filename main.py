@@ -15,6 +15,9 @@ yahoo_base = "https://finance.yahoo.com/quote/"
 # sends tickers to uppers
 ticker_apple = ticker_apple.upper()
 
+# testing the expose function of js (working)
+eel.addTicker(ticker_apple)
+
 # program will search said website for ticker
 #                                 ticker?=ticker.tsrc=fin-srch
 # https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link
@@ -33,8 +36,8 @@ soup1 = BeautifulSoup(html_text, "lxml")
 
 # grab first three news articles (don't know why it skips the ad and only gets the first 3) buuttttt it works sooooo
 # possible infinte scrolling glitch
-news_article = soup1.findAll(
-    'li', class_='js-stream-content Pos(r)')
+news_article = soup1.findAll('li', class_='js-stream-content Pos(r)')
+
 
 # list containing back end of links aka HREFS
 yahoo_links = []
@@ -51,6 +54,9 @@ for articles in news_article:
 for text in yahoo_links:
     print(text)
     print("\n\n")
+
+# used to test if we can pass arrays through js functions (this is also working)
+eel.setNewsArticles(yahoo_links)
 
 # starts the eel program
 eel.start('index.html')
