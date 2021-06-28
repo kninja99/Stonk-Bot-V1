@@ -15,9 +15,6 @@ yahoo_base = "https://finance.yahoo.com/quote/"
 # sends tickers to uppers
 ticker_apple = ticker_apple.upper()
 
-# testing the expose function of js (working)
-eel.addTicker(ticker_apple)
-
 # program will search said website for ticker
 #                                 ticker?=ticker.tsrc=fin-srch
 # https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link
@@ -55,11 +52,10 @@ for text in yahoo_links:
     print(text)
     print("\n\n")
 
-# used to test if we can pass arrays through js functions (this is also working)
-eel.setNewsArticles(yahoo_links)
-
+eel.addStock(ticker_apple, yahoo_links)
+eel.addStock(ticker_apple, yahoo_links)
 # starts the eel program
-eel.start('index.html')
+eel.start('index.html', size=(1280, 720), position=(100, 40))
 
 
 # grab links to news areticals next
