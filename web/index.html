@@ -19,22 +19,24 @@
   </head>
   <body>
     <!-- this is where the header elements will be -->
-    <div class="row container-justify" id="header">
-      <div class="col-md-8">
+    
+    <div class="row container-justify-right" id="header">
+
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4">
         <h1>Stonk news</h1>
       </div>
 
-      <div class="col-md-2">
+      <!--Search Bar-->
+      <div class="col-md-3">
       
-        <div class="input-group rounded">
-          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-         <span class="input-group-text border-0" id="search-addon">
-           <i class="fas fa-search"></i>
-         </span>
+        <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"aria-describedby="search-addon" />
+          <button type="button" class="btn btn-primary">search</button>
         </div>
-      </div>
       
-    </div>
+      </div>
 
     <div class="container"></div>
     <!-- loads the js functions -->
