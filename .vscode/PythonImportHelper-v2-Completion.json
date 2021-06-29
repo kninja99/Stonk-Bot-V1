@@ -1,0 +1,99 @@
+[
+    {
+        "label": "closerange",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "ticker_apple",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "ticker_apple = 'aapl'\nyahoo_base = \"https://finance.yahoo.com/quote/\"\n# sends tickers to uppers\nticker_apple.upper()\n# program will search said website for ticker\n#                                 ticker?=ticker.tsrc=fin-srch\n# https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link\n# https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch\n# https://finance.yahoo.com --- Normal link for yahoo\n# TEMP COMMENT",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "yahoo_base",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "yahoo_base = \"https://finance.yahoo.com/quote/\"\n# sends tickers to uppers\nticker_apple.upper()\n# program will search said website for ticker\n#                                 ticker?=ticker.tsrc=fin-srch\n# https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link\n# https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch\n# https://finance.yahoo.com --- Normal link for yahoo\n# TEMP COMMENT\nhtml_text = requests.get(",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "html_text",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "html_text = requests.get(\n    \"https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch\").text\n# html_text = requests.get(\n#    \"https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch\").text\n# send to soup\nsoup1 = BeautifulSoup(html_text, \"lxml\")\n# grab first three news articles (don't know why it skips the ad and only gets the first 3) buuttttt it works sooooo\n# possible infinte scrolling glitch\nnews_article = soup1.findAll(\n    'li', class_='js-stream-content Pos(r)')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "soup1",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "soup1 = BeautifulSoup(html_text, \"lxml\")\n# grab first three news articles (don't know why it skips the ad and only gets the first 3) buuttttt it works sooooo\n# possible infinte scrolling glitch\nnews_article = soup1.findAll(\n    'li', class_='js-stream-content Pos(r)')\n# list containing back end of links aka HREFS\nyahoo_links = []\n# hrefs added to this link to get ful url\nyahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "news_article",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "news_article = soup1.findAll(\n    'li', class_='js-stream-content Pos(r)')\n# list containing back end of links aka HREFS\nyahoo_links = []\n# hrefs added to this link to get ful url\nyahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo\nfor articles in news_article:\n    temp_link = articles.find('a', href=True)\n    yahoo_links.append(yahoo_base_link + temp_link['href'])",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "yahoo_links",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "yahoo_links = []\n# hrefs added to this link to get ful url\nyahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo\nfor articles in news_article:\n    temp_link = articles.find('a', href=True)\n    yahoo_links.append(yahoo_base_link + temp_link['href'])\n# for testing\nfor text in yahoo_links:\n    print(text)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "yahoo_base_link",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "yahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo\nfor articles in news_article:\n    temp_link = articles.find('a', href=True)\n    yahoo_links.append(yahoo_base_link + temp_link['href'])\n# for testing\nfor text in yahoo_links:\n    print(text)\n    print(\"\\n\\n\")\n# grab links to news areticals next",
+        "detail": "main",
+        "documentation": {}
+    }
+]
