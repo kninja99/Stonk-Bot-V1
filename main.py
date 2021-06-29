@@ -1,11 +1,38 @@
-from bs4 import BeautifulSoup
-import requests
-print('hello')
-import eel
-from os import closerange
-from bs4 import BeautifulSoup
-import requests
 import time
+from os import closerange
+import eel
+from bs4 import BeautifulSoup
+import requests
+
+
+'''
+this function will return the headers of the articles to an array
+#param HTMLarr = articles list in html
+#return an array of type string, articleHeaderArr
+'''
+
+
+def articlesHeaderToString(HTMLarr):
+    articleHeaderArr = []
+    for i in HTMLarr:
+        header = i.find('h3')
+        articleHeaderArr.append(header.get_text())
+    return articleHeaderArr
+
+
+'''
+this function will return the preview of the articles to an array
+#param HTMLarr = articles list in html
+#return articlePreArr = the preview of the article
+'''
+
+
+def articlesPreviewToString(HTMLarr):
+    articlePreArr = []
+    for i in HTMLarr:
+        preview = i.find('p')
+        articlePreArr.append(preview.get_text())
+    return articlePreArr
 
 
 # points eel to the directors where html file is
@@ -51,6 +78,11 @@ for articles in news_article:
 for text in yahoo_links:
     print(text)
     print("\n\n")
+
+
+# for testing the output of article preview
+articlesHeaderToString(news_article)
+articlesPreviewToString(news_article)
 
 eel.addStock(ticker_apple, yahoo_links)
 eel.addStock(ticker_apple, yahoo_links)
