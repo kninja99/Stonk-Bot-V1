@@ -12,7 +12,12 @@ body {
   font-size: 32px;
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 10px;
+  padding-top: 25px;
+}
+
+.btn-primary {
+  background-color: purple;
+  border-color: purple;
 }
 
 .ticker {
