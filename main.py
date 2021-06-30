@@ -84,8 +84,11 @@ for text in yahoo_links:
 articlesHeaderToString(news_article)
 articlesPreviewToString(news_article)
 
-eel.addStock(ticker_apple, yahoo_links)
-eel.addStock(ticker_apple, yahoo_links)
+
+eel.addStock(ticker_apple, articlesHeaderToString(
+    news_article), articlesPreviewToString(news_article))
+eel.addStock(ticker_apple, articlesHeaderToString(
+    news_article), articlesPreviewToString(news_article))
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40))
 
