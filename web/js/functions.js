@@ -1,3 +1,5 @@
+const searchButton = document.querySelector('button');
+
 /**
  * funtion that will add a stock ticker and its respected news articles
  * @param {string} tick - the ticker symbol in terms of a string
@@ -35,3 +37,14 @@ function addStock(tick, headerArr, previewArr) {
   container.appendChild(div);
 }
 eel.expose(addStock);
+
+/**
+ * This function will be handling the search bar inputs
+ */
+function searchBarHandler() {
+  const input = document.querySelector('input').value;
+  document.querySelector('input').value = '';
+  eel.grabInput(input);
+}
+
+searchButton.addEventListener('click', searchBarHandler);
