@@ -4,6 +4,19 @@ import eel
 from bs4 import BeautifulSoup
 import requests
 
+# testing variable
+userInputArr = []
+
+'''
+this function is used to send front end button input to the backend
+#param input = user input from front end
+'''
+
+
+@eel.expose
+def grabInput(input):
+    userInputArr.append(input)
+
 
 '''
 this function will return the headers of the articles to an array
@@ -89,8 +102,20 @@ eel.addStock(ticker_apple, articlesHeaderToString(
     news_article), articlesPreviewToString(news_article))
 eel.addStock(ticker_apple, articlesHeaderToString(
     news_article), articlesPreviewToString(news_article))
-# starts the eel program
-eel.start('index.html', size=(1280, 720), position=(100, 40))
 
+
+# starts the eel program
+eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
+
+# testing loop for live updates
+arrLength = len(userInputArr)
+
+while True:
+    if(arrLength < len(userInputArr)):
+        print(userInputArr)
+        arrLength = len(userInputArr)
+    else:
+        print("no changes")
+    eel.sleep(1)
 
 # grab links to news areticals next
