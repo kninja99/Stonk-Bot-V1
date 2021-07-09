@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 
 # testing variable
-userInputArr = []
+user_input_que = []
 
 '''
 this function is used to send front end button input to the backend
@@ -15,7 +15,7 @@ this function is used to send front end button input to the backend
 
 @eel.expose
 def grabInput(input):
-    userInputArr.append(input)
+    user_input_que.append(input)
 
 
 '''
@@ -87,17 +87,6 @@ for articles in news_article:
     temp_link = articles.find('a', href=True)
     yahoo_links.append(yahoo_base_link + temp_link['href'])
 
-# for testing
-for text in yahoo_links:
-    print(text)
-    print("\n\n")
-
-
-# for testing the output of article preview
-articlesHeaderToString(news_article)
-articlesPreviewToString(news_article)
-
-
 eel.addStock(ticker_apple, articlesHeaderToString(
     news_article), articlesPreviewToString(news_article))
 eel.addStock(ticker_apple, articlesHeaderToString(
@@ -108,14 +97,12 @@ eel.addStock(ticker_apple, articlesHeaderToString(
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
 # testing loop for live updates
-arrLength = len(userInputArr)
 
 while True:
-    if(arrLength < len(userInputArr)):
-        print(userInputArr)
-        arrLength = len(userInputArr)
+    if(len(user_input_que) > 0):
+        print(user_input_que)
+        print(user_input_que.pop(0))
     else:
-        print("no changes")
+        print("This que is empty")
     eel.sleep(1)
-
 # grab links to news areticals next
