@@ -1,4 +1,5 @@
 const searchButton = document.querySelector('button');
+const inputForm = document.querySelector('input');
 
 /**
  * funtion that will add a stock ticker and its respected news articles
@@ -42,9 +43,17 @@ eel.expose(addStock);
  * This function will be handling the search bar inputs
  */
 function searchBarHandler() {
-  const input = document.querySelector('input').value;
-  document.querySelector('input').value = '';
+  const input = inputForm.value;
+  inputForm.value = '';
   eel.grabInput(input);
 }
 
+//search bar handlers
 searchButton.addEventListener('click', searchBarHandler);
+// this event handler allows the user to press enter for input
+inputForm.addEventListener('keyup', function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    searchButton.click();
+  }
+});
