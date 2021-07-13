@@ -3,6 +3,7 @@ from os import closerange
 import eel
 from bs4 import BeautifulSoup
 import requests
+from requests.api import request
 
 # user input que
 user_input_que = []
@@ -87,7 +88,7 @@ eel.init('web')
 # https://www.marketwatch.com/investing/stock/aapl?mod=quote_search
 # https://www.marketwatch.com/investing/stock/poww?mod=quote_search
 
-ticker = 'POWW'
+ticker = 'aapl'
 # builds link based off of the inputed ticker, currently just yahoo
 seeking_search = "https://www.marketwatch.com/investing/stock/{tick}?mod=quote_search".format(
     tick=ticker)
@@ -99,6 +100,15 @@ news_articles = soup.find('div', class_='article__content')
 # finds the header and strips the trailing and begining white space
 header = news_articles.find('h3').get_text().strip()
 print(header)
+# finding the article
+link_to_article = news_articles.find('a', href=True)
+html_info = requests.get(link_to_article['href']).text
+soup = BeautifulSoup(html_info, 'lxml')
+news_summary = soup.find('div', {'id': 'js-article__body'})
+news_summary = news_summary.findAll('p')
+# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases
+news_summary = news_summary[0].get_text().strip()
+print(news_summary)
 
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
