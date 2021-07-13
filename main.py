@@ -64,9 +64,13 @@ def buildNews(stockTicker):
     soup = BeautifulSoup(html_info, "lxml")
     # builds a news articles array
     news_articles = soup.find('li', class_='js-stream-content Pos(r)')
-    # sends info to frontend
-    eel.addStock(ticker, articlesHeaderToString(
-        news_articles), articlesPreviewToString(news_articles))
+    # checks for a valid stock ticker, if not valid will spit out an error message
+    if news_articles == None:
+        eel.searchError()
+    else:
+        # sends info to frontend
+        eel.addStock(ticker, articlesHeaderToString(
+            news_articles), articlesPreviewToString(news_articles))
 
 
 # points eel to the directors where html file is
