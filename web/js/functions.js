@@ -48,6 +48,15 @@ function searchBarHandler() {
   eel.grabInput(input);
 }
 
+/**
+ * this function handles a search error on the front end
+ */
+function searchError() {
+  alert('No such stock ticker exist');
+  inputForm.value = '';
+}
+eel.expose(searchError);
+
 //search bar handlers
 searchButton.addEventListener('click', searchBarHandler);
 // this event handler allows the user to press enter for input
