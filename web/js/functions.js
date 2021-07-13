@@ -53,7 +53,6 @@ function searchBarHandler() {
  */
 function searchError() {
   alert('No such stock ticker exist');
-  inputForm.value = '';
 }
 eel.expose(searchError);
 
