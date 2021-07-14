@@ -1,10 +1,28 @@
 [
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "closerange",
         "importPath": "os",
         "description": "os",
         "isExtraImport": true,
         "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "eel",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "eel",
+        "description": "eel",
+        "detail": "eel",
         "documentation": {}
     },
     {
@@ -25,75 +43,272 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
+        "label": "request",
+        "importPath": "requests.api",
+        "description": "requests.api",
         "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "detail": "requests.api",
         "documentation": {}
     },
     {
-        "label": "ticker_apple",
-        "kind": 5,
+        "label": "grabInput",
+        "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "ticker_apple = 'aapl'\nyahoo_base = \"https://finance.yahoo.com/quote/\"\n# sends tickers to uppers\nticker_apple.upper()\n# program will search said website for ticker\n#                                 ticker?=ticker.tsrc=fin-srch\n# https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link\n# https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch\n# https://finance.yahoo.com --- Normal link for yahoo\n# TEMP COMMENT",
+        "peekOfCode": "def grabInput(input):\n    user_input_que.append(input)\n'''\nthis function will return the headers of the articles to an array\n# param HTMLarr = articles list in html\n# return an array of type string, articleHeaderArr\n'''\ndef articlesHeaderToString(HTMLarr):\n    articleHeaderArr = []\n    for i in HTMLarr:",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "yahoo_base",
-        "kind": 5,
+        "label": "articlesHeaderToString",
+        "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "yahoo_base = \"https://finance.yahoo.com/quote/\"\n# sends tickers to uppers\nticker_apple.upper()\n# program will search said website for ticker\n#                                 ticker?=ticker.tsrc=fin-srch\n# https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link\n# https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch\n# https://finance.yahoo.com --- Normal link for yahoo\n# TEMP COMMENT\nhtml_text = requests.get(",
+        "peekOfCode": "def articlesHeaderToString(HTMLarr):\n    articleHeaderArr = []\n    for i in HTMLarr:\n        header = i.find('h3')\n        articleHeaderArr.append(header.get_text())\n    return articleHeaderArr\n'''\nthis function will return the preview of the articles to an array\n# param HTMLarr = articles list in html\n# return articlePreArr = the preview of the article",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "html_text",
-        "kind": 5,
+        "label": "articlesPreviewToString",
+        "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "html_text = requests.get(\n    \"https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch\").text\n# html_text = requests.get(\n#    \"https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch\").text\n# send to soup\nsoup1 = BeautifulSoup(html_text, \"lxml\")\n# grab first three news articles (don't know why it skips the ad and only gets the first 3) buuttttt it works sooooo\n# possible infinte scrolling glitch\nnews_article = soup1.findAll(\n    'li', class_='js-stream-content Pos(r)')",
+        "peekOfCode": "def articlesPreviewToString(HTMLarr):\n    articlePreArr = []\n    for i in HTMLarr:\n        preview = i.find('p')\n        articlePreArr.append(preview.get_text())\n    return articlePreArr\n'''\nthis function will build news articles on startup and also used for live updates\n# param stockTicker = ticker that you want to scrape info on\n'''",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "soup1",
-        "kind": 5,
+        "label": "buildNews",
+        "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "soup1 = BeautifulSoup(html_text, \"lxml\")\n# grab first three news articles (don't know why it skips the ad and only gets the first 3) buuttttt it works sooooo\n# possible infinte scrolling glitch\nnews_article = soup1.findAll(\n    'li', class_='js-stream-content Pos(r)')\n# list containing back end of links aka HREFS\nyahoo_links = []\n# hrefs added to this link to get ful url\nyahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo",
+        "peekOfCode": "def buildNews(stockTicker):\n    ticker = stockTicker.upper()\n    # builds link based off of the inputed ticker, currently just yahoo\n    yahoo_search = \"https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch\".format(\n        tick=ticker)\n    # gets html info and sends to a scraper called soup\n    html_info = requests.get(yahoo_search).text\n    soup = BeautifulSoup(html_info, \"lxml\")\n    # builds a news articles array\n    news_articles = soup.find('li', class_='js-stream-content Pos(r)')",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "news_article",
+        "label": "user_input_que",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "news_article = soup1.findAll(\n    'li', class_='js-stream-content Pos(r)')\n# list containing back end of links aka HREFS\nyahoo_links = []\n# hrefs added to this link to get ful url\nyahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo\nfor articles in news_article:\n    temp_link = articles.find('a', href=True)\n    yahoo_links.append(yahoo_base_link + temp_link['href'])",
+        "peekOfCode": "user_input_que = []\n'''\nthis function is used to send front end button input to the backend\n# param input = user input from front end\n'''\n@eel.expose\ndef grabInput(input):\n    user_input_que.append(input)\n'''\nthis function will return the headers of the articles to an array",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "yahoo_links",
+        "label": "ticker",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "yahoo_links = []\n# hrefs added to this link to get ful url\nyahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo\nfor articles in news_article:\n    temp_link = articles.find('a', href=True)\n    yahoo_links.append(yahoo_base_link + temp_link['href'])\n# for testing\nfor text in yahoo_links:\n    print(text)",
+        "peekOfCode": "ticker = 'aapl'\n# builds link based off of the inputed ticker, currently just yahoo\nseeking_search = \"https://www.marketwatch.com/investing/stock/{tick}?mod=quote_search\".format(\n    tick=ticker)\n# gets html info and sends to a scraper called soup\nhtml_info = requests.get(seeking_search).text\nsoup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "yahoo_base_link",
+        "label": "seeking_search",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "yahoo_base_link = \"https://finance.yahoo.com\"\n# for loop that finds the href and builds full links for yahoo\nfor articles in news_article:\n    temp_link = articles.find('a', href=True)\n    yahoo_links.append(yahoo_base_link + temp_link['href'])\n# for testing\nfor text in yahoo_links:\n    print(text)\n    print(\"\\n\\n\")\n# grab links to news areticals next",
+        "peekOfCode": "seeking_search = \"https://www.marketwatch.com/investing/stock/{tick}?mod=quote_search\".format(\n    tick=ticker)\n# gets html info and sends to a scraper called soup\nhtml_info = requests.get(seeking_search).text\nsoup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "html_info",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "html_info = requests.get(seeking_search).text\nsoup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "soup",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "soup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "news_articles",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "news_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "header = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "link_to_article",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "link_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "html_info",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "html_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)\n# application loop",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "soup",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "soup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)\n# application loop\nwhile True:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "news_summary",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "news_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)\n# application loop\nwhile True:\n    if(len(user_input_que) > 0):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "news_summary",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "news_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)\n# application loop\nwhile True:\n    if(len(user_input_que) > 0):\n        # Takes in user input and will build the news for it",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "news_summary",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "news_summary = news_summary[0].get_text().strip()\nprint(news_summary)\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)\n# application loop\nwhile True:\n    if(len(user_input_que) > 0):\n        # Takes in user input and will build the news for it\n        buildNews(user_input_que.pop(0))\n    else:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ticker",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "ticker = 'aapl'\n# builds link based off of the inputed ticker, currently just yahoo\nseeking_search = \"https://www.marketwatch.com/investing/stock/{tick}?mod=quote_search\".format(\n    tick=ticker)\n# gets html info and sends to a scraper called soup\nhtml_info = requests.get(seeking_search).text\nsoup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "seeking_search",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "seeking_search = \"https://www.marketwatch.com/investing/stock/{tick}?mod=quote_search\".format(\n    tick=ticker)\n# gets html info and sends to a scraper called soup\nhtml_info = requests.get(seeking_search).text\nsoup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "html_info",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "html_info = requests.get(seeking_search).text\nsoup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "soup",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "soup = BeautifulSoup(html_info, \"lxml\")\n# looks for the important html info\nnews_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "news_articles",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "news_articles = soup.find('div', class_='article__content')\n# finds the header and strips the trailing and begining white space\nheader = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "header",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "header = news_articles.find('h3').get_text().strip()\nprint(header)\n# finding the article\nlink_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "link_to_article",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "link_to_article = news_articles.find('a', href=True)\nhtml_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "html_info",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "html_info = requests.get(link_to_article['href']).text\nsoup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "soup",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "soup = BeautifulSoup(html_info, 'lxml')\nnews_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "news_summary",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "news_summary = soup.find('div', {'id': 'js-article__body'})\nnews_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "news_summary",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "news_summary = news_summary.findAll('p')\n# most of the time you want the first p element... but some cases you dont, need to figure out a workaround for those cases\nnews_summary = news_summary[0].get_text().strip()\nprint(news_summary)",
+        "detail": "tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "news_summary",
+        "kind": 5,
+        "importPath": "tempCodeRunnerFile",
+        "description": "tempCodeRunnerFile",
+        "peekOfCode": "news_summary = news_summary[0].get_text().strip()\nprint(news_summary)",
+        "detail": "tempCodeRunnerFile",
         "documentation": {}
     }
 ]
