@@ -1,3 +1,4 @@
+/* base styles */
 :root {
   --background: #191919;
   --text_color: white;
@@ -8,13 +9,30 @@ body {
   color: var(--text_color);
 }
 
+/* header styles */
 #header {
   font-size: 32px;
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 10px;
+  padding-top: 25px;
 }
 
+/* button styles */
+.btn-primary {
+  background-color: rgb(128, 0, 128);
+  border-color: rgb(128, 0, 128);
+}
+.btn-primary:hover {
+  background-color: rgb(92, 3, 92);
+  border-color: rgb(92, 3, 92);
+}
+.btn-primary:focus {
+  outline: 0;
+  background-color: rgb(128, 0, 128);
+  border-color: rgb(128, 0, 128);
+}
+
+/* stock article styles */
 .ticker {
   padding-left: 0px;
 }
