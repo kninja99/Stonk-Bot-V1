@@ -11,7 +11,6 @@ this function will return the headers of the articles to an array
 #return an array of type string, articleHeaderArr
 '''
 
-
 def articlesHeaderToString(HTMLarr):
     articleHeaderArr = []
     for i in HTMLarr:
