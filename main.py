@@ -1,4 +1,3 @@
-import time
 from os import closerange
 import eel
 from bs4 import BeautifulSoup
