@@ -3,6 +3,7 @@ import eel
 from bs4 import BeautifulSoup
 import requests
 from requests.api import request
+import scraper
 
 # user input que
 user_input_que = []
@@ -23,6 +24,7 @@ this function will return the headers of the articles to an array
 # param HTMLarr = articles list in html
 # return an array of type string, articleHeaderArr
 '''
+
 
 def articlesHeaderToString(HTMLarr):
     articleHeaderArr = []
@@ -108,6 +110,7 @@ news_summary = news_summary.findAll('p')
 news_summary = news_summary[0].get_text().strip()
 print(news_summary)
 
+
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
@@ -118,7 +121,6 @@ while True:
         # Takes in user input and will build the news for it
         buildNews(user_input_que.pop(0))
     else:
-        # print statement for testing purposes
-        print("This que is empty")
-    eel.sleep(1)
+        eel.sleep(1)
+
 # grab links to news areticals next
