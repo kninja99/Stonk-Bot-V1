@@ -57,19 +57,30 @@ class Scraper:
         self.header_arr.append(header)
         # article preview
         article_link = news_articles.find('a', href=True)
-        html_info = requests.get(article_link['href']).text
-        soup = BeautifulSoup(html_info, 'lxml')
-        news_summary = soup.find('div', {'id': 'js-article__body'})
-        # pretty much grabs the whole news article in html
-        news_summary = news_summary.findAll('p')
-        # need to send each html into a string and append it to an arr
-        article_preview = []
-        for text in news_summary:
-            article_preview.append(text.get_text().strip())
-        # appends to article
-        self.articles_info.append(article_preview)
-        # appends article link
-        self.link_to_article.append(article_link['href'])
+        # if there is no valid link to article
+        if(article_link == None):
+            # appends an empty list so index count doesnt get mixed up
+            self.articles_info.append([])
+            # appends a Null pointer in article links
+            self.link_to_article.append(article_link)
+        # this gets executed if there is a valid link to the article
+        else:
+            html_info = requests.get(article_link['href']).text
+            soup = BeautifulSoup(html_info, 'lxml')
+            news_summary = soup.find('div', {'id': 'js-article__body'})
+            # pretty much grabs the whole news article in html
+            news_summary = news_summary.findAll('p')
+            # need to send each html into a string and append it to an arr
+            article_preview = []
+            for text in news_summary:
+                article_preview.append(text.get_text().strip())
+            # appends to article
+            self.articles_info.append(article_preview)
+            # appends article link
+            self.link_to_article.append(article_link['href'])
+
+    def benZingaScraper(self):
+        pass
 
     # ---- function getters ----
 
