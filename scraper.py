@@ -38,7 +38,7 @@ class Scraper:
         head = news_articles.find('a', href=True)
         self.header_arr.append(head.get_text())
         # this first steps sets article preview to an array that contains the articles preview info
-        article_preview = [news_articles.find('p').get_text()]
+        article_preview = news_articles.find('p').get_text()
         self.articles_info.append(article_preview)
         # grabs article link and appends in proper index
         article_link = 'https://finance.yahoo.com' + head['href']
@@ -61,7 +61,7 @@ class Scraper:
         # if there is no valid link to article
         if(article_link == None):
             # appends an empty list so index count doesnt get mixed up
-            self.articles_info.append([])
+            self.articles_info.append('')
             # appends a Null pointer in article links
             self.link_to_article.append(article_link)
         # this gets executed if there is a valid link to the article
@@ -72,10 +72,11 @@ class Scraper:
             news_summary = soup.find('div', {'id': 'js-article__body'})
             # pretty much grabs the whole news article in html
             news_summary = news_summary.findAll('p')
-            # need to send each html into a string and append it to an arr
-            article_preview = []
-            for text in news_summary:
-                article_preview.append(text.get_text().strip())
+            # sets first p tag to the article preview
+            article_preview = news_summary[0].get_text()
+            # checks word count to see if there is an author set as a p tag, if there is it will grab the next p tag
+            if(article_preview.count(' ') <= 3):
+                article_preview = news_summary[1].get_text()
             # appends to article
             self.articles_info.append(article_preview)
             # appends article link
@@ -101,7 +102,7 @@ class Scraper:
         article_preview = soup.find('div', class_='article-content')
         # gets the article preview in text
         article_preview = article_preview.find('p').get_text()
-        article_arr = [article_preview]
+        article_arr = article_preview
         self.articles_info.append(article_arr)
 
     # ---- function getters ----

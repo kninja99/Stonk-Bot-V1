@@ -77,13 +77,14 @@ def buildNews(stockTicker):
 # points eel to the directors where html file is
 eel.init('web')
 
-news_scraper = scraper.Scraper('dis')
+news_scraper = scraper.Scraper('DIS')
 # testing to see if new_scraper built right and is displaying data in order
 print('---- Headers ----')
 print(news_scraper.header_arr)
 print('---- article previews ----')
 # probably should look into a way of condensing market watch to only one element, so finding a way to grab the importent preview element of every ticker that is searched
 for arr in news_scraper.articles_info:
+    print('--news article--')
     print(arr)
 print('---- links ----')
 print(news_scraper.link_to_article)
