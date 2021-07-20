@@ -77,42 +77,6 @@ def buildNews(stockTicker):
 # points eel to the directors where html file is
 eel.init('web')
 
-# yahoo link info
-#                                 ticker?=ticker.tsrc=fin-srch
-# https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch  ---- searched link
-# https://finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch
-# https://finance.yahoo.com --- Normal link for yahoo
-
-
-# marketwatch, trying to figure out how to scrap market watch
-# https://www.marketwatch.com/investing/stock/aapl?mod=quote_search
-# https://www.marketwatch.com/investing/stock/poww?mod=quote_search
-
-# benZinga scraper testing
-# base site https://www.benzinga.com/
-# aapl https://www.benzinga.com/quote/AAPL
-# poww https://www.benzinga.com/quote/POWW
-# stock search link https://www.benzinga.com/quote/{ticker}
-
-# benzinga_search = 'https://www.benzinga.com/quote/{tick}'.format(tick='AAPL')
-# html_info = requests.get(benzinga_search).text
-# soup = BeautifulSoup(html_info, 'lxml')
-# news_articles = soup.find('div', class_='py-2')
-# # finds the header and sets it to a string
-# header = news_articles.get_text()
-# # now getting to the article
-# article_link = news_articles.find('a', href=True)
-# article_link = article_link['href']  # grabs the link to article
-# # opens the article
-# html_info = requests.get(article_link).text
-# soup = BeautifulSoup(html_info, 'lxml')
-# article_preview = soup.find('div', class_='article-content')
-# # gets the article preview in text
-# article_preview = article_preview.find('p').get_text()
-# print(header)
-# print(article_preview)
-
-
 news_scraper = scraper.Scraper('dis')
 # testing to see if new_scraper built right and is displaying data in order
 print('---- Headers ----')
