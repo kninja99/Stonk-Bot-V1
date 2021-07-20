@@ -19,9 +19,10 @@ class Scraper:
     link_to_article = []  # this array will contain the links to each article
 
     def __init__(self, stock_ticker):
-        self.stock_ticker = stock_ticker
+        self.stock_ticker = stock_ticker.upper()
         self.yahooScraper()
         self.marketWatchScraper()
+        self.benZingaScraper()
 
     # ---- Scraper Function Logic ----
 
@@ -65,6 +66,7 @@ class Scraper:
             self.link_to_article.append(article_link)
         # this gets executed if there is a valid link to the article
         else:
+            # opens the article link
             html_info = requests.get(article_link['href']).text
             soup = BeautifulSoup(html_info, 'lxml')
             news_summary = soup.find('div', {'id': 'js-article__body'})
@@ -80,7 +82,27 @@ class Scraper:
             self.link_to_article.append(article_link['href'])
 
     def benZingaScraper(self):
-        pass
+        benzinga_search = 'https://www.benzinga.com/quote/{tick}'.format(
+            tick=self.stock_ticker)
+        html_info = requests.get(benzinga_search).text
+        soup = BeautifulSoup(html_info, 'lxml')
+        news_articles = soup.find('div', class_='py-2')
+        # finds the header and sets it to a string
+        header = news_articles.get_text()
+        # adds header to header arr
+        self.header_arr.append(header)
+        # now getting to the article
+        article_link = news_articles.find('a', href=True)
+        article_link = article_link['href']  # grabs the link to article
+        self.link_to_article.append(article_link)
+        # opens the article
+        html_info = requests.get(article_link).text
+        soup = BeautifulSoup(html_info, 'lxml')
+        article_preview = soup.find('div', class_='article-content')
+        # gets the article preview in text
+        article_preview = article_preview.find('p').get_text()
+        article_arr = [article_preview]
+        self.articles_info.append(article_arr)
 
     # ---- function getters ----
 

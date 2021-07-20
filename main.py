@@ -88,7 +88,42 @@ eel.init('web')
 # https://www.marketwatch.com/investing/stock/aapl?mod=quote_search
 # https://www.marketwatch.com/investing/stock/poww?mod=quote_search
 
-news_scraper = scraper.Scraper('AAPL')
+# benZinga scraper testing
+# base site https://www.benzinga.com/
+# aapl https://www.benzinga.com/quote/AAPL
+# poww https://www.benzinga.com/quote/POWW
+# stock search link https://www.benzinga.com/quote/{ticker}
+
+# benzinga_search = 'https://www.benzinga.com/quote/{tick}'.format(tick='AAPL')
+# html_info = requests.get(benzinga_search).text
+# soup = BeautifulSoup(html_info, 'lxml')
+# news_articles = soup.find('div', class_='py-2')
+# # finds the header and sets it to a string
+# header = news_articles.get_text()
+# # now getting to the article
+# article_link = news_articles.find('a', href=True)
+# article_link = article_link['href']  # grabs the link to article
+# # opens the article
+# html_info = requests.get(article_link).text
+# soup = BeautifulSoup(html_info, 'lxml')
+# article_preview = soup.find('div', class_='article-content')
+# # gets the article preview in text
+# article_preview = article_preview.find('p').get_text()
+# print(header)
+# print(article_preview)
+
+
+news_scraper = scraper.Scraper('dis')
+# testing to see if new_scraper built right and is displaying data in order
+print('---- Headers ----')
+print(news_scraper.header_arr)
+print('---- article previews ----')
+# probably should look into a way of condensing market watch to only one element, so finding a way to grab the importent preview element of every ticker that is searched
+for arr in news_scraper.articles_info:
+    print(arr)
+print('---- links ----')
+print(news_scraper.link_to_article)
+
 
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
