@@ -1,0 +1,35 @@
+/* base colors */
+:root {
+  --background: #191919;
+  --text_color: white;
+  --primary: #bb86fc;
+}
+
+/* resets the margin and padding for all */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text_color);
+}
+
+header {
+  display: flex;
+  margin: 5vh 5vw;
+  justify-content: space-between;
+}
+
+#logo {
+  height: 9.2%;
+  width: 13.68%;
+  max-height: 92px;
+  max-width: 114px;
+}
+
+#title {
+  font-size: 2.2rem;
+  text-shadow: 4px 4px 4px var(--primary);
+}
