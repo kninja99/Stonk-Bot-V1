@@ -3,6 +3,8 @@
   --background: #191919;
   --text_color: white;
   --primary: #bb86fc;
+  --text_box: #3b3b3b;
+  --red: #cf6679;
 }
 
 /* resets the margin and padding for all */
@@ -16,20 +18,117 @@ body {
   color: var(--text_color);
 }
 
+button {
+  border: none;
+}
+
+/* header styles */
 header {
   display: flex;
   margin: 5vh 5vw;
+  margin-top: 25px;
   justify-content: space-between;
 }
 
-#logo {
+.logo {
   height: 9.2%;
   width: 13.68%;
   max-height: 92px;
   max-width: 114px;
 }
 
-#title {
-  font-size: 2.2rem;
+.title {
+  font-size: 2.4rem;
   text-shadow: 4px 4px 4px var(--primary);
+  padding-left: 8vw;
+  padding-top: 17px;
+}
+
+input {
+  outline: none;
+}
+
+.input_feild {
+  background-color: var(--text_box);
+  color: var(--text_color);
+  width: 25vw;
+  max-width: 238px;
+  height: 38px;
+  border: none;
+  border-radius: 12px;
+  padding-left: 15px;
+}
+
+#search_button {
+  width: 45px;
+  height: 40px;
+  transform: translate(-25px, 2px);
+  border-radius: 15px;
+  background-color: var(--primary);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+}
+
+#search_button:hover {
+  background-color: rgb(179, 122, 248);
+  cursor: pointer;
+}
+
+.search_bar {
+  padding-top: 18px;
+  transform: translateX(25px);
+}
+
+/* Stock styles */
+
+.stock_container {
+  margin: 8vh 5vw;
+}
+
+.stock_header {
+  display: flex;
+  margin-bottom: 15px;
+  color: var(--text_color);
+}
+
+.price {
+  padding-left: 25px;
+}
+
+.percent_change {
+  padding-left: 20px;
+  color: #bb86fc;
+}
+
+.stock_header button {
+  background-color: var(--red);
+  position: absolute;
+  right: 5vw;
+  width: 30px;
+  height: 30px;
+}
+
+.stock_header button:hover {
+  background-color: #cf5d72;
+  cursor: pointer;
+}
+
+.line {
+  border-bottom: 2px solid black;
+  width: 14px;
+  margin-left: 8px;
+  margin-top: 2px;
+}
+.articles {
+  background-color: var(--text_box);
+  padding: 15px;
+}
+
+.background {
+  width: auto;
+  height: 100vh;
+  background-image: url(../img/background-lines.png);
+  background-size: 100%;
+  background-repeat: repeat-y;
 }
