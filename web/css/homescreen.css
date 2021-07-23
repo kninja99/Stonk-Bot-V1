@@ -126,9 +126,17 @@ input {
 }
 
 .background {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
   width: auto;
-  height: 100vh;
+  height: auto;
   background-image: url(../img/background-lines.png);
   background-size: 100%;
   background-repeat: repeat-y;
+  /* resetting the view port */
+  top: 165px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
