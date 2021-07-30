@@ -1,7 +1,7 @@
 /* base colors */
 :root {
   --background: #191919;
-  --text_color: white;
+  --text_color: rgba(255, 255, 255, 0.95);
   --primary: #bb86fc;
   --text_box: #3b3b3b;
   --red: #cf6679;
@@ -16,6 +16,7 @@
 body {
   background-color: var(--background);
   color: var(--text_color);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
@@ -38,10 +39,11 @@ header {
 }
 
 .title {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   text-shadow: 4px 4px 4px var(--primary);
-  padding-left: 8vw;
+  margin-left: 8vw;
   padding-top: 17px;
+  color: #ffffff;
 }
 
 input {
@@ -80,7 +82,7 @@ input {
   transform: translateX(25px);
 }
 
-/* Stock styles */
+/* Stock container style */
 
 .stock_container {
   margin: 8vh 5vw;
@@ -90,6 +92,7 @@ input {
   display: flex;
   margin-bottom: 15px;
   color: var(--text_color);
+  font-size: 18px;
 }
 
 .price {
@@ -114,15 +117,32 @@ input {
   cursor: pointer;
 }
 
+/* line in the remove button */
 .line {
   border-bottom: 2px solid black;
   width: 14px;
   margin-left: 8px;
   margin-top: 2px;
 }
+
+/* article styles */
 .articles {
   background-color: var(--text_box);
   padding: 15px;
+}
+
+.articles h3 {
+  font-size: 22px;
+  padding-bottom: 15px;
+  margin-left: 3px;
+  text-decoration: underline;
+}
+
+.articles p {
+  font-size: 17px;
+  padding-bottom: 10px;
+  text-indent: 51px;
+  line-height: 25px;
 }
 
 .background {
@@ -139,4 +159,62 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+/* media querys for responsive design*/
+@media screen and (max-width: 775px) {
+  header {
+    display: flex;
+    margin: 5vh 5vw;
+    margin-top: 25px;
+  }
+
+  .title {
+    position: absolute;
+    margin-left: 0px;
+    font-size: 2.2rem;
+  }
+
+  .input_feild {
+    width: 30vw;
+  }
+
+  .logo {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 553px) {
+  header {
+    display: grid;
+    margin-top: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      'title'
+      'search_bar';
+  }
+
+  .search_bar {
+    text-align: center;
+    transform: translateX(15px);
+    margin-top: 15px;
+  }
+
+  .input_feild {
+    width: 205px;
+    max-width: none;
+    min-width: 205px;
+  }
+
+  .title {
+    text-align: center;
+    position: relative;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  #search_button {
+    transform: translate(-25px, 1px);
+  }
 }
