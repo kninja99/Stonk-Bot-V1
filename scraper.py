@@ -17,12 +17,16 @@ class Scraper:
     header_arr = []         # headers of arrays
     articles_info = []  # articles infor will be an array of arrays
     link_to_article = []  # this array will contain the links to each article
+    # variables that keep track of stock prices and change
+    current_price = None
+    percent_change = None
 
     def __init__(self, stock_ticker):
         self.stock_ticker = stock_ticker.upper()
         self.yahooScraper()
         self.marketWatchScraper()
         self.benZingaScraper()
+        self.fetchPriceInfo()
 
     # ---- Scraper Function Logic ----
 
@@ -104,6 +108,24 @@ class Scraper:
         article_preview = article_preview.find('p').get_text()
         article_arr = article_preview
         self.articles_info.append(article_arr)
+
+    '''
+    this will fetch all the price info that is needed
+    such as the current price, and the price change in the day
+    '''
+
+    def fetchPriceInfo(self):
+        # creates the link to yahoo
+        yahoo_search = "https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch".format(
+            tick=self.stock_ticker)
+        html_info = requests.get(yahoo_search).text
+        soup = BeautifulSoup(html_info, 'lxml')
+        # builds a price info arr
+        price_info_arr = soup.find('div', class_='D(ib) Mend(20px)')
+        price_info_arr = price_info_arr.find_all('span')
+        # sends the price info and percent change to the object data
+        self.current_price = price_info_arr[0].get_text()
+        self.percent_change = price_info_arr[1].get_text()
 
     # ---- function getters ----
 
