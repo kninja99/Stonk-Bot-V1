@@ -23,7 +23,7 @@ def grabInput(input):
 eel.init('web')
 
 # this is for testing
-news_scraper = scraper.Scraper('dis')
+#news_scraper = scraper.Scraper('dis')
 # testing to see if new_scraper built right and is displaying data in order
 # print('---- Headers ----')
 # print(news_scraper.header_arr)d
@@ -37,7 +37,7 @@ news_scraper = scraper.Scraper('dis')
 
 
 # starts the eel program
-eel.start('index.html', block=False)
+eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
 
 # application loop
