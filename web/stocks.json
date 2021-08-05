@@ -1,0 +1,14 @@
+{
+  "stock_info": [
+    {
+      "stock_ticker": "aapl",
+      "price": "22.50",
+      "percent_change": "+22%"
+    },
+    {
+      "stock_ticker": "poww",
+      "price": "22.50",
+      "percent_change": "+22%"
+    }
+  ]
+}

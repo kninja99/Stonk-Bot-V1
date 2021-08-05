@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 from requests.api import request
 import scraper
+import json
 
 # user input que
 user_input_que = []
@@ -19,23 +20,23 @@ def grabInput(input):
     user_input_que.append(input)
 
 
+def write_json(data, file_name='web/stocks.json'):
+    with open(file_name, 'w') as f:
+        json.dump(data, f, indent=2)
+
+
 # points eel to the directors where html file is
 eel.init('web')
 
-# this is for testing
-#news_scraper = scraper.Scraper('dis')
-# testing to see if new_scraper built right and is displaying data in order
-# print('---- Headers ----')
-# print(news_scraper.header_arr)d
-# print('---- article previews ----')
-# # probably should look into a way of condensing market watch to only one element, so finding a way to grab the importent preview element of every ticker that is searched
-# for arr in news_scraper.articles_info:
-#     print('--news article--')
-#     print(arr)
-# print('---- links ----')
-# print(news_scraper.link_to_article)
+# testing writing to jason
+with open('web/stocks.json') as json_file:
+    data = json.load(json_file)
+    temp = data['stock_info']
+    y = {'stock_ticker': 'poww', 'price': '22.50', 'percent_change': '+22%'}
+    temp.append(y)
 
 
+write_json(data)
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
