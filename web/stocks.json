@@ -1,5 +1,44 @@
 {
   "stock_info": [
-  
+    {
+      "stock_ticker": "POWW",
+      "price": "6.77",
+      "percent_change": "-0.51 (-7.01%)",
+      "headers": [
+        "AMMO, Inc. Announces $51 Million Revenue Projection for Fiscal Second Quarter 2022",
+        "AMMO Boosts 1Q Rev Forecast, Sees Positive Net Income Quarter",
+        "CORRECTION: AMMO Ticker Is 'POWW'Benzinga - Jul 15, 2021, 8:35AM"
+      ],
+      "articles": [
+        "SCOTTSDALE, AZ, July 15, 2021 (GLOBE NEWSWIRE) -- AMMO, Inc. (Nasdaq: POWW & POWWP) (\u201cAMMO\u201d or the \u201cCompany\u201d), a leading vertically integrated producer of high-performance ammunition and components and operator of GunBroker.com, the largest online marketplace serving the firearms and shooting sports industries today announced that it anticipates reporting revenue of at least $51 million for its fiscal second quarter ending September 30, 2021, a year-over-year increase of more than 400%. \u201cOur imp",
+        "AMMO Inc. boosted its first-quarter revenue forecast Thursday and said it anticipates reporting its first positive net income quarter.",
+        "This headline-only article is meant to show you why a stock is moving, the most difficult aspect of stock trading. Every day we publish hundreds of headlines on any catalyst that could move the stocks you care about on Benzinga Pro, our flagship platform for fast, actionable information that promotes faster, smarter trading."
+      ],
+      "links": [
+        "https://finance.yahoo.com/news/ammo-inc-announces-51-million-123000303.html",
+        "https://www.marketwatch.com/story/ammo-boosts-1q-rev-forecast-sees-positive-net-income-quarter-271625749553?mod=mw_quote_news",
+        "https://www.benzinga.com/general/21/07/21996364/correction-ammo-ticker-is-poww"
+      ]
+    },
+    {
+      "stock_ticker": "AAPL",
+      "price": "147.06",
+      "percent_change": "+0.11 (+0.07%)",
+      "headers": [
+        "Jeff Bezos helped the Washington Post \u2018take advantage of the gift the internet had to offer': Marty Baron",
+        "Critics warn Apple plan to scan iPhones for images of child sexual abuse could be misused",
+        "Cathie Wood's Ark Trims Tesla Stake 2nd Day In A Row, Sells $117M In Elon Musk CompanyBenzinga - 28 minutes ago"
+      ],
+      "articles": [
+        "Former Washington Post Executive Editor, Marty Baron, joins 'Influencers with Andy Serwer' to discuss his experience working under Amazon Founder Jeff Bezos.",
+        "Apple unveiled\u00a0plans to scan U.S. iPhones\u00a0for images of child sexual abuse, drawing applause from child protection groups but raising concern among some security researchers that the system could be misused, including by governments looking to surveil their citizens.",
+        "Cathie Wood-led Ark Invest on Thursday shed 3.4% of its position in Tesla Inc (NASDAQ: TSLA), the second straight sell as shares of the Elon Musk-led company stayed steady after climbing in the past week."
+      ],
+      "links": [
+        "https://finance.yahoo.com/video/jeff-bezos-helped-washington-post-110000282.html",
+        "https://www.marketwatch.com/story/critics-warn-apple-plan-to-scan-iphones-for-images-of-child-sexual-abuse-could-be-misused-01628201371?mod=mw_quote_news",
+        "https://www.benzinga.com/news/21/08/22367300/cathie-woods-ark-trims-tesla-stake-2nd-day-in-a-row-sells-117m-in-elon-musk-company"
+      ]
+    }
   ]
 }

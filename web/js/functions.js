@@ -18,6 +18,11 @@ function searchError() {
 }
 eel.expose(searchError);
 
+function duplicateDataError() {
+  alert('Data has alread been retrieved for this stock ticker');
+}
+eel.expose(duplicateDataError);
+
 //search bar handlers
 searchButton.addEventListener('click', searchBarHandler);
 // this event handler allows the user to press enter for input
