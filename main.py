@@ -69,6 +69,17 @@ eel.init('web')
 
 # write_json(data)
 
+stock = scraper.Scraper('AAPL')
+
+with open('web/stocks.json') as json_file:
+    data = json.load(json_file)
+    temp = data['stock_info']
+    y = {'stock_ticker': stock.stock_ticker, 'price': stock.current_price, 'percent_change': stock.percent_change,
+         'headers': stock.header_arr, 'articles': stock.articles_info, 'links': stock.link_to_article}
+    temp.append(y)
+    write_json(data)
+
+
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
