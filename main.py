@@ -20,23 +20,55 @@ def grabInput(input):
     user_input_que.append(input)
 
 
+'''
+writes data to json file 
+# param data = data you wish to write 
+# param file_name = json file name
+'''
+
+
 def write_json(data, file_name='web/stocks.json'):
     with open(file_name, 'w') as f:
         json.dump(data, f, indent=2)
 
 
+'''
+this will seach for a stock ticker to remove from the json 
+stock info list
+'''
+
+
+def remove_stock(ticker, file_name='web/stocks.json'):
+    # opens and reads json stock info list
+    with open(file_name) as f:
+        data = json.load(f)
+        stock_information = data['stock_info']
+    # searches for the stock ticker that you want to remove
+    for stock in stock_information:
+        stock_ticker = stock['stock_ticker']
+        print(stock_ticker)
+        if(stock_ticker == ticker):
+            # removes the stock from original stock list
+            stock_information.remove(stock)
+            # process of overwriting old data
+            data['stock_info'] = stock_information
+            write_json(data)
+
+
 # points eel to the directors where html file is
 eel.init('web')
 
-# testing writing to jason
-with open('web/stocks.json') as json_file:
-    data = json.load(json_file)
-    temp = data['stock_info']
-    y = {'stock_ticker': 'poww', 'price': '22.50', 'percent_change': '+22%'}
-    temp.append(y)
 
+# testing writing to json (working)
 
-write_json(data)
+# with open('web/stocks.json') as json_file:
+#     data = json.load(json_file)
+#     temp = data['stock_info']
+#     y = {'stock_ticker': 'poww', 'price': '22.50', 'percent_change': '+22%'}
+#     temp.append(y)
+
+# write_json(data)
+
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
