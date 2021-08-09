@@ -85,7 +85,7 @@ input {
 /* Stock container style */
 
 .stock_container {
-  margin: 8vh 5vw;
+  margin: 5vh 5vw;
 }
 
 .stock_header {
@@ -146,7 +146,7 @@ input {
 }
 
 .background {
-  position: absolute;
+  position: sticky;
   display: flex;
   flex-direction: column;
   width: auto;
