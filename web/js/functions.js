@@ -3,7 +3,23 @@ const inputForm = document.querySelector('input');
 
 class Stock_List {
   constructor() {
+    // fetching the json file (async)
+    fetch('../stocks.json')
+      .then(function (resp) {
+        return resp.json();
+      })
+      .then(function (data) {
+        let stock_info_arr = data.stock_info;
+        for (const stock of stock_info_arr) {
+          console.log(stock);
+        }
+      });
+  }
+
+  add_stock() {
     let big_container = document.querySelector('.background');
+    // this statement fixes the background once a stock is added
+    big_container.style.position = 'sticky';
     let stock_container = document.createElement('div');
     stock_container.className = 'stock_container';
     stock_container.innerHTML = `
@@ -48,8 +64,9 @@ class Stock_List {
 }
 
 let temp = new Stock_List();
+temp.add_stock();
+temp.add_stock();
 
-// fetching the json file (async)
 fetch('../stocks.json')
   .then(function (resp) {
     return resp.json();

@@ -146,7 +146,7 @@ input {
 }
 
 .background {
-  position: sticky;
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: auto;
@@ -159,6 +159,7 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
+  background-attachment: fixed;
 }
 
 /* media querys for responsive design*/
