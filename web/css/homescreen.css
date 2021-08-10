@@ -219,3 +219,7 @@ input {
     transform: translate(-25px, 1px);
   }
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}

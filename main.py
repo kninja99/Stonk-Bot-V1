@@ -5,6 +5,8 @@ import requests
 from requests.api import request
 import scraper
 import json
+# constent
+JSON_FILE = 'web/stocks.json'
 
 # user input que
 user_input_que = []
@@ -27,12 +29,12 @@ writes data to json file
 '''
 
 
-def write_json(data, file_name='web/stocks.json'):
+def write_json(data, file_name=JSON_FILE):
     with open(file_name, 'w') as f:
         json.dump(data, f, indent=2)
 
 
-def search_json(ticker, file_name='web/stocks.json'):
+def search_json(ticker, file_name=JSON_FILE):
     # opens and reads json stock info list
     with open(file_name) as f:
         data = json.load(f)
@@ -51,7 +53,8 @@ stock info list
 '''
 
 
-def remove_stock(ticker, file_name='web/stocks.json'):
+@eel.expose
+def remove_stock(ticker, file_name=JSON_FILE):
     # opens and reads json stock info list
     with open(file_name) as f:
         data = json.load(f)
@@ -74,7 +77,7 @@ this function will take in a scraper object of a stock and send th information t
 '''
 
 
-def add_stock(stock, file_name='web/stocks.json'):
+def add_stock(stock, file_name=JSON_FILE):
     with open(file_name) as json_file:
         data = json.load(json_file)
         temp = data['stock_info']

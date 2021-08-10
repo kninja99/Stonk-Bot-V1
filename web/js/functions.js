@@ -3,77 +3,66 @@ const inputForm = document.querySelector('input');
 
 class Stock_List {
   constructor() {
-    // fetching the json file (async)
-    fetch('../stocks.json')
-      .then(function (resp) {
-        return resp.json();
-      })
-      .then(function (data) {
-        let stock_info_arr = data.stock_info;
-        for (const stock of stock_info_arr) {
-          console.log(stock);
-        }
-      });
+    // fetching the json file and building
+    this.getData();
   }
 
-  add_stock() {
+  /**
+   * this will read the json file, get the data needed
+   * and then build up the initial list on startup that was
+   * saved in the json file
+   */
+  async getData() {
+    const response = await fetch('../stocks.json');
+    const data = await response.json();
+    for (const stock of data.stock_info) {
+      this.add_stock(stock);
+    }
+  }
+
+  /**
+   * this will add a stock to the front end
+   * @param {*} jsObject - A JavaScript Object of stock info
+   */
+  add_stock(jsObject) {
     let big_container = document.querySelector('.background');
     // this statement fixes the background once a stock is added
     big_container.style.position = 'sticky';
     let stock_container = document.createElement('div');
     stock_container.className = 'stock_container';
+    stock_container.id = jsObject['stock_ticker'];
+    // stock header being built
     stock_container.innerHTML = `
     <div class="stock_header">
-      <h2 class="stock_ticker">AAPL</h2>
-      <h2 class="price">$23.99</h2>
-      <h2 class="percent_change">+2.5%</h2>
+      <h2 class="stock_ticker">${jsObject['stock_ticker']}</h2>
+      <h2 class="price">${jsObject['price']}</h2>
+      <h2 class="percent_change">${jsObject['percent_change']}</h2>
       <button>
         <div class="line"></div>
       </button>
-    </div>
-    <div class="articles">
-      <h3>News Header</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est modi
-        magni numquam doloribus, ipsum commodi aliquam optio quis! Eaque
-        veritatis, dolor doloribus, voluptatum laudantium incidunt
-        consequuntur quasi est nihil officiis quo adipisci libero dolorem
-        animi?
-      </p>
-      <h3>News Header</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est modi
-        magni numquam doloribus, ipsum commodi aliquam optio quis! Eaque
-        veritatis, dolor doloribus, voluptatum laudantium incidunt
-        consequuntur quasi est nihil officiis quo adipisci libero dolorem
-        animi?
-      </p>
-      <h3>News Header</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est modi
-        magni numquam doloribus, ipsum commodi aliquam optio quis! Eaque
-        veritatis, dolor doloribus, voluptatum laudantium incidunt
-        consequuntur quasi est nihil officiis quo adipisci libero dolorem
-        animi?
-      </p>
-    </div>
-    `;
+    </div>`;
+    // articles being built
+    for (let i = 0; i < jsObject['headers'].length; i++) {
+      stock_container.innerHTML += `
+      <div class="articles">
+        <h3>${jsObject['headers'][i]}</h3>
+        <p>
+          ${jsObject['articles'][i]}
+        </p>`;
+    }
+    //closing off the div of the stock container
+    stock_container.innerHTML += `
+    </div>`;
 
     big_container.appendChild(stock_container);
   }
+
+  /*
+  removes a stock from the front end
+  and calls a function to remove it from the back end
+  */
+  remove_stock(ticker) {}
 }
-
-let temp = new Stock_List();
-temp.add_stock();
-temp.add_stock();
-
-fetch('../stocks.json')
-  .then(function (resp) {
-    return resp.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
 
 /**
  * This function will be handling the search bar inputs
@@ -84,21 +73,6 @@ function searchBarHandler() {
   eel.grabInput(input);
 }
 
-/**
- * this function handles a search error on the front end
- */
-function searchError() {
-  alert('No such stock ticker exist');
-}
-eel.expose(searchError);
-
-function duplicateDataError() {
-  alert('Data has alread been retrieved for this stock ticker');
-}
-eel.expose(duplicateDataError);
-
-// This section will handle the adding and deleteing of the stocks on the front end
-
 //search bar handlers
 searchButton.addEventListener('click', searchBarHandler);
 // this event handler allows the user to press enter for input
@@ -108,3 +82,6 @@ inputForm.addEventListener('keyup', function (event) {
     searchButton.click();
   }
 });
+
+// this will create a Stock_List object
+let user_stocks = new Stock_List();
