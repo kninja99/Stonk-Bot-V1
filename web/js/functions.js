@@ -17,6 +17,7 @@ class Stock_List {
     const data = await response.json();
     for (const stock of data.stock_info) {
       this.add_stock(stock);
+      this.remove_stock(stock['stock_ticker']);
     }
   }
 
@@ -61,7 +62,10 @@ class Stock_List {
   removes a stock from the front end
   and calls a function to remove it from the back end
   */
-  remove_stock(ticker) {}
+  remove_stock(ticker) {
+    let temp = document.getElementById(ticker);
+    console.log(temp);
+  }
 }
 
 /**
