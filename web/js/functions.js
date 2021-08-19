@@ -4,7 +4,7 @@ const inputForm = document.querySelector('input');
 class Stock_List {
   constructor() {
     // fetching the json file and building
-    this.getData();
+    this.initialData();
   }
 
   /**
@@ -12,7 +12,7 @@ class Stock_List {
    * and then build up the initial list on startup that was
    * saved in the json file
    */
-  async getData() {
+  async initialData() {
     const response = await fetch('../stocks.json');
     const data = await response.json();
     for (const stock of data.stock_info) {
@@ -69,8 +69,10 @@ class Stock_List {
   and calls a function to remove it from the back end
   */
   remove_stock() {
-    let temp = document.querySelector(`#${this.id}`);
-    console.log(temp);
+    let removed_stock = document.querySelector(`#${this.id}`);
+    console.log(removed_stock);
+    eel.remove_stock(this.id);
+    removed_stock.remove();
   }
 }
 
