@@ -17,7 +17,8 @@ class Stock_List {
     const data = await response.json();
     for (const stock of data.stock_info) {
       this.add_stock(stock);
-      this.remove_stock(stock['stock_ticker']);
+      // this works for some reason
+      //this.remove_stock(stock['stock_ticker']);
     }
   }
 
@@ -38,7 +39,7 @@ class Stock_List {
       <h2 class="stock_ticker">${jsObject['stock_ticker']}</h2>
       <h2 class="price">${jsObject['price']}</h2>
       <h2 class="percent_change">${jsObject['percent_change']}</h2>
-      <button>
+      <button id = ${jsObject['stock_ticker']}>
         <div class="line"></div>
       </button>
     </div>`;
@@ -51,10 +52,15 @@ class Stock_List {
           ${jsObject['articles'][i]}
         </p>`;
     }
-    //closing off the div of the stock container
+    // closing off the div of the stock container
     stock_container.innerHTML += `
     </div>`;
 
+    // binding the remove button to the remove function
+    let remove_button = stock_container.querySelector('button');
+
+    remove_button.addEventListener('click', this.remove_stock);
+    // appending all of the content to the container
     big_container.appendChild(stock_container);
   }
 
@@ -62,8 +68,8 @@ class Stock_List {
   removes a stock from the front end
   and calls a function to remove it from the back end
   */
-  remove_stock(ticker) {
-    let temp = document.getElementById(ticker);
+  remove_stock() {
+    let temp = document.querySelector(`#${this.id}`);
     console.log(temp);
   }
 }
