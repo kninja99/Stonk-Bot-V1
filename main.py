@@ -103,5 +103,3 @@ while True:
         # if data doesn't exist this is where it will be built
     else:
         eel.sleep(1)
-
-# grab links to news areticals next
