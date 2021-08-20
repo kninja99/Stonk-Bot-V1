@@ -1,8 +1,8 @@
 /**
  * this function handles a search error on the front end
  */
-function searchError() {
-  alert('No such stock ticker exist');
+function searchError(ticker) {
+  alert(`${ticker} does not exist`);
 }
 eel.expose(searchError);
 /**

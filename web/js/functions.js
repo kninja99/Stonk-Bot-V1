@@ -5,6 +5,7 @@ class Stock_List {
   constructor() {
     // fetching the json file and building
     this.initialData();
+    this.data = null;
   }
 
   /**
@@ -17,9 +18,18 @@ class Stock_List {
     const data = await response.json();
     for (const stock of data.stock_info) {
       this.add_stock(stock);
-      // this works for some reason
-      //this.remove_stock(stock['stock_ticker']);
     }
+  }
+
+  /**
+   * will fetch the data from the json file and set it equal to a data array
+   * this array is filled with the same info from the stock_info array in the
+   * json file
+   */
+  async fetchJson() {
+    const response = await fetch('../stocks.json');
+    const data = await response.json();
+    this.data = data.stock_info;
   }
 
   /**

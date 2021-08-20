@@ -3,11 +3,22 @@ import eel
 from bs4 import BeautifulSoup
 import requests
 
-'''
-this will be the class the all the scrapers will inherit
-has your base variables  that each scraper should have
-and also has getters for all variables
-'''
+
+def searchError(ticker):
+    '''
+    this function will determine if you can search for an entered ticker
+    :param ticker: this is the ticker that it will search for
+    :return: Will return True if it can't find the stock and false if it can
+    '''
+    # creates the link to yahoo
+    yahoo_search = "https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch".format(
+        tick=ticker.upper())
+    html_info = requests.get(yahoo_search).text
+    soup = BeautifulSoup(html_info, 'lxml')
+    news_articles = soup.find('li', class_='js-stream-content Pos(r)')
+    if(news_articles == None):
+        return True
+    return False
 
 # a new scraper will be created for each ticker symbol
 
