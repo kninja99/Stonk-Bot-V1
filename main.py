@@ -106,6 +106,8 @@ while True:
             news_build = scraper.Scraper(user_input)
             # adds the stock to the json file
             add_stock(news_build)
+            # adds the stock to the front end
+            eel.add_new_stock()
 
     else:
         eel.sleep(1)

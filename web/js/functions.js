@@ -4,8 +4,8 @@ const inputForm = document.querySelector('input');
 class Stock_List {
   constructor() {
     // fetching the json file and building
+    this.data = [];
     this.initialData();
-    this.data = null;
   }
 
   /**
@@ -14,6 +14,7 @@ class Stock_List {
    * saved in the json file
    */
   async initialData() {
+    this.fetchJson();
     const response = await fetch('../stocks.json');
     const data = await response.json();
     for (const stock of data.stock_info) {
