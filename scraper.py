@@ -25,14 +25,14 @@ def searchError(ticker):
 
 class Scraper:
     stock_ticker = None
-    header_arr = []         # headers of arrays
-    articles_info = []  # articles infor will be an array of arrays
-    link_to_article = []  # this array will contain the links to each article
     # variables that keep track of stock prices and change
     current_price = None
     percent_change = None
 
     def __init__(self, stock_ticker):
+        self.header_arr = []
+        self.articles_info = []
+        self.link_to_article = []
         self.stock_ticker = stock_ticker.upper()
         self.yahooScraper()
         self.marketWatchScraper()

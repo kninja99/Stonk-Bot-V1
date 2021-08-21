@@ -14,12 +14,11 @@ class Stock_List {
    * saved in the json file
    */
   async initialData() {
-    this.fetchJson();
-    const response = await fetch('../stocks.json');
-    const data = await response.json();
-    for (const stock of data.stock_info) {
-      this.add_stock(stock);
-    }
+    this.fetchJson().then(() => {
+      for (const stock of this.data) {
+        this.add_stock(stock);
+      }
+    });
   }
 
   /**
@@ -41,7 +40,9 @@ class Stock_List {
   add_stock(jsObject) {
     let big_container = document.querySelector('.background');
     // this statement fixes the background once a stock is added
-    big_container.style.position = 'sticky';
+    if (this.data.length > 1) {
+      big_container.style.position = 'sticky';
+    }
     let stock_container = document.createElement('div');
     stock_container.className = 'stock_container';
     stock_container.id = jsObject['stock_ticker'];
@@ -85,6 +86,7 @@ class Stock_List {
     console.log(removed_stock);
     eel.remove_stock(this.id);
     removed_stock.remove();
+    Stock_List.remove_data_background_fix();
   }
 }
 
