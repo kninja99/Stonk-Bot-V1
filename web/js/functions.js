@@ -4,7 +4,7 @@ const inputForm = document.querySelector('input');
 class Stock_List {
   constructor() {
     // fetching the json file and building
-    this.data = [];
+    this.data = null;
     this.initialData();
   }
 
@@ -31,6 +31,7 @@ class Stock_List {
     const response = await fetch('../stocks.json');
     const data = await response.json();
     this.data = data.stock_info;
+    return data;
   }
 
   /**
@@ -108,3 +109,17 @@ inputForm.addEventListener('keyup', function (event) {
 
 // this will create a Stock_List object
 let user_stocks = new Stock_List();
+
+/**
+ * allows communications for the backend and
+ * the front end to dymanically add stocks
+ * to the front end
+ */
+function add_new_stock() {
+  user_stocks.fetchJson().then(() => {
+    let stock_arr = user_stocks.data;
+    let added_stock = stock_arr[stock_arr.length - 1];
+    user_stocks.add_stock(added_stock);
+  });
+}
+eel.expose(add_new_stock);

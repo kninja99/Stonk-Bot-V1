@@ -108,6 +108,5 @@ while True:
             add_stock(news_build)
             # adds the stock to the front end
             eel.add_new_stock()
-
     else:
         eel.sleep(1)
