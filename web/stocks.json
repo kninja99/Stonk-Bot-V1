@@ -1,6 +1,26 @@
 {
   "stock_info": [
     {
+      "stock_ticker": "AAPL",
+      "price": "148.19",
+      "percent_change": "+1.49 (+1.02%)",
+      "headers": [
+        "Dow Jones Futures: Market Rally Rebounds But Does It Pass Your Test? Apple, Facebook, Nvidia Near Buy Points",
+        "Protecting voting rights isn\u2019t just the right thing to do, it\u2019s also good for business",
+        "Here's How Much A Steve Jobs Autographed Apple II Manual Just Sold ForBenzinga - 22 hours ago"
+      ],
+      "articles": [
+        "The market rally rebounded Friday, paring weekly losses. But how are your stocks faring? Apple and Facebook are near buys.",
+        "A strong democracy is not only vital for America\u2019s moral fabric, but also for our economic future. Democratically accountable governments provide a level playing field for all market participants and ensure competition, as well as help protect businesses from fraud and deception. ",
+        "Since his passing in 2011, Apple Inc (NASDAQ: AAPL) memorabilia featuring Steve Jobs has risen significantly in value. An auction ending Thursday night featured several Jobs related items that fetched some impressive valuations."
+      ],
+      "links": [
+        "https://finance.yahoo.com/m/55bf83ec-cc2d-31ee-8d63-93114a91cbbd/dow-jones-futures-market.html",
+        "https://www.marketwatch.com/story/protecting-voting-rights-isnt-just-the-right-thing-to-do-its-also-good-for-business-11629475745?mod=mw_quote_news",
+        "https://www.benzinga.com/news/21/08/22603939/heres-how-much-a-steve-jobs-autographed-apple-ii-manual-just-sold-for"
+      ]
+    },
+    {
       "stock_ticker": "POWW",
       "price": "7.16",
       "percent_change": "+0.04 (+0.56%)",
@@ -27,7 +47,7 @@
       "headers": [
         "Three Things That Tell Me Lordstown Motors Is in Deep Trouble",
         "The Chip Shortage Looks Like the Oil Shortage of the 1970s. What It Means for Stocks and the Economy.",
-        "Ford Stock Prints This Bullish Reversal Pattern: What To WatchBenzinga - 20 hours ago"
+        "Ford Stock Prints This Bullish Reversal Pattern: What To WatchBenzinga - 22 hours ago"
       ],
       "articles": [
         "With the founder gone, those left behind are scrambling to turn what's left into a real business.",
