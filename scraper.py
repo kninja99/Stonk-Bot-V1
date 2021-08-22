@@ -1,5 +1,3 @@
-from os import closerange
-import eel
 from bs4 import BeautifulSoup
 import requests
 

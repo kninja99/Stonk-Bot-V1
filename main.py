@@ -1,12 +1,6 @@
-from os import closerange
 import eel
-from bs4 import BeautifulSoup
-import requests
-from requests.api import request
 import scraper
 import JsonManager
-# constent
-JSON_FILE = 'web/stocks.json'
 
 # user input que
 user_input_que = []
