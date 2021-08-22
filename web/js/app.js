@@ -1,6 +1,13 @@
+// selected elements needed to be intereacted with the user to search
 const searchButton = document.querySelector('#search_button');
 const inputForm = document.querySelector('input');
 
+// ----  Front end for the stock list ----
+
+/**
+ * this class will be used to handle the display of the stocks
+ * on the front end
+ */
 class Stock_List {
   constructor() {
     // fetching the json file and building
@@ -120,6 +127,8 @@ function background_adjuster() {
   }
 }
 
+//---- search bar handlers ----
+
 /**
  * This function will be handling the search bar inputs
  */
@@ -129,7 +138,6 @@ function searchBarHandler() {
   eel.grabInput(input);
 }
 
-//search bar handlers
 searchButton.addEventListener('click', searchBarHandler);
 // this event handler allows the user to press enter for input
 inputForm.addEventListener('keyup', function (event) {
@@ -145,7 +153,7 @@ let user_stocks = new Stock_List();
 /**
  * allows communications for the backend and
  * the front end to dymanically add stocks
- * to the front end
+ * to the front end (had to add due to the way eel works)
  */
 function add_new_stock() {
   user_stocks.fetchJson().then(() => {
