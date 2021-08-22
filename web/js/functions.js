@@ -35,7 +35,7 @@ class Stock_List {
 
   /**
    * this will add a stock to the front end
-   * @param {*} jsObject - A JavaScript Object of stock info
+   * @param {*} jsObject : A JavaScript Object of stock info
    */
   add_stock(jsObject) {
     let big_container = document.querySelector('.background');
@@ -43,6 +43,7 @@ class Stock_List {
     if (this.data.length > 1) {
       big_container.style.position = 'sticky';
     }
+
     let stock_container = document.createElement('div');
     stock_container.className = 'stock_container';
     stock_container.id = jsObject['stock_ticker'];
@@ -68,6 +69,8 @@ class Stock_List {
     // closing off the div of the stock container
     stock_container.innerHTML += `
     </div>`;
+    // checks negative to add the correct style
+    this.check_negative(stock_container);
 
     // binding the remove button to the remove function
     let remove_button = stock_container.querySelector('button');
@@ -83,10 +86,37 @@ class Stock_List {
   */
   remove_stock() {
     let removed_stock = document.querySelector(`#${this.id}`);
-    console.log(removed_stock);
     eel.remove_stock(this.id);
     removed_stock.remove();
-    Stock_List.remove_data_background_fix();
+    background_adjuster();
+  }
+
+  /**
+   * will correct the style of the stocks percent change
+   * if the stock is down for the day
+   * @param {*} stockContainer : Stock container that the function is correcting
+   */
+  check_negative(stockContainer) {
+    let percent_change = stockContainer.querySelector('.percent_change');
+    let inner = percent_change.innerHTML;
+    if (inner.charAt(0) == '-') {
+      percent_change.className = 'negative';
+    }
+  }
+}
+
+/**
+ * this function is used in the remove stock function in Stock_list
+ * it will adjust the background properly to keep the display consitent for the
+ * user
+ */
+function background_adjuster() {
+  let stocks_displayed = document.querySelectorAll('.stock_container').length;
+  let background = document.querySelector('.background');
+  //clears the sticky background assigend while adding stocks when the document
+  //has less then 2 stocks displayed
+  if (stocks_displayed <= 1) {
+    background.style = '';
   }
 }
 

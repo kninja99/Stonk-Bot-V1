@@ -101,7 +101,12 @@ input {
 
 .percent_change {
   padding-left: 20px;
-  color: #bb86fc;
+  color: var(--primary);
+}
+
+.negative {
+  padding-left: 20px;
+  color: var(--red);
 }
 
 .stock_header button {

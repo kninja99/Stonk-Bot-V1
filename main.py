@@ -90,6 +90,8 @@ eel.init('web')
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
+# pre-load data saved
+
 
 # application loop
 while True:
