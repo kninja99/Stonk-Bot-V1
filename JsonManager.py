@@ -64,3 +64,10 @@ this function will take in a scraper object of a stock and send th information t
                 'headers': stock.header_arr, 'articles': stock.articles_info, 'links': stock.link_to_article}
         temp.append(info)
         write_json(data)
+
+
+def getStocks(file_name=JSON_FILE):
+    with open(file_name) as f:
+        data = json.load(f)
+        stock_information = data['stock_info']
+        return stock_information

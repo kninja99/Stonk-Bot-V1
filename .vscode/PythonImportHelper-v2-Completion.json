@@ -89,6 +89,15 @@
         "documentation": {}
     },
     {
+        "label": "getStocks",
+        "kind": 2,
+        "importPath": "JsonManager",
+        "description": "JsonManager",
+        "peekOfCode": "def getStocks(file_name=JSON_FILE):\n    with open(file_name) as f:\n        data = json.load(f)\n        stock_information = data['stock_info']\n        return stock_information",
+        "detail": "JsonManager",
+        "documentation": {}
+    },
+    {
         "label": "JSON_FILE",
         "kind": 5,
         "importPath": "JsonManager",
@@ -102,7 +111,16 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def grabInput(input):\n    '''\nthis function is used to send front end button input to the backend\n:param input: user input from front end\n'''\n    user_input_que.append(input)\n# points eel to the directors where html file is\neel.init('web')\n# starts the eel program\neel.start('index.html', size=(1280, 720), position=(100, 40), block=False)",
+        "peekOfCode": "def grabInput(input):\n    '''\nthis function is used to send front end button input to the backend\n:param input: user input from front end\n'''\n    user_input_que.append(input)\ndef loadData():\n    '''\n    this function will load most recent data for the saved stocks\n    '''",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "loadData",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def loadData():\n    '''\n    this function will load most recent data for the saved stocks\n    '''\n    old_stock_info = JsonManager.getStocks()\n    old_stock_tickers = []\n    # saves old stock tickers and then removes old data\n    for stock in old_stock_info:\n        old_stock_tickers.append(stock['stock_ticker'])\n        JsonManager.remove_stock(stock['stock_ticker'])",
         "detail": "main",
         "documentation": {}
     },
@@ -111,7 +129,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "user_input_que = []\n@eel.expose\ndef grabInput(input):\n    '''\nthis function is used to send front end button input to the backend\n:param input: user input from front end\n'''\n    user_input_que.append(input)\n# points eel to the directors where html file is\neel.init('web')",
+        "peekOfCode": "user_input_que = []\n@eel.expose\ndef grabInput(input):\n    '''\nthis function is used to send front end button input to the backend\n:param input: user input from front end\n'''\n    user_input_que.append(input)\ndef loadData():\n    '''",
         "detail": "main",
         "documentation": {}
     },
