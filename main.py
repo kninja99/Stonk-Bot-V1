@@ -35,6 +35,7 @@ def loadData():
 
 # pre loads data before launch
 eel.spawn(loadData())
+
 # points eel to the directors where html file is
 eel.init('web')
 
