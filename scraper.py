@@ -9,8 +9,7 @@ def searchError(ticker):
     :return: Will return True if it can't find the stock and false if it can
     '''
     # creates the link to yahoo
-    yahoo_search = "https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch".format(
-        tick=ticker.upper())
+    yahoo_search = "https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch".format( tick=ticker.upper())
     html_info = requests.get(yahoo_search).text
     soup = BeautifulSoup(html_info, 'lxml')
     news_articles = soup.find('li', class_='js-stream-content Pos(r)')
