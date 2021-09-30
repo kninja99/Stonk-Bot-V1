@@ -42,7 +42,11 @@ eel.init('web')
 # starts the eel program
 eel.start('index.html', size=(1280, 720), position=(100, 40), block=False)
 
+test = scraper.Scraper('F')
 
+test.benZingaScraper()
+
+''' commentd out main application loop for testing 
 # application loop
 while True:
     if(len(user_input_que) > 0):
@@ -62,3 +66,4 @@ while True:
             eel.add_new_stock()
     else:
         eel.sleep(1)
+        '''

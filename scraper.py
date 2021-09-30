@@ -9,7 +9,8 @@ def searchError(ticker):
     :return: Will return True if it can't find the stock and false if it can
     '''
     # creates the link to yahoo
-    yahoo_search = "https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch".format( tick=ticker.upper())
+    yahoo_search = "https://finance.yahoo.com/quote/{tick}?p={tick}&.tsrc=fin-srch".format(
+        tick=ticker.upper())
     html_info = requests.get(yahoo_search).text
     soup = BeautifulSoup(html_info, 'lxml')
     news_articles = soup.find('li', class_='js-stream-content Pos(r)')
@@ -33,7 +34,7 @@ class Scraper:
         self.stock_ticker = stock_ticker.upper()
         self.yahooScraper()
         self.marketWatchScraper()
-        self.benZingaScraper()
+        # self.benZingaScraper()
         self.fetchPriceInfo()
 
     # ---- Scraper Function Logic ----
@@ -97,9 +98,13 @@ class Scraper:
     def benZingaScraper(self):
         benzinga_search = 'https://www.benzinga.com/quote/{tick}'.format(
             tick=self.stock_ticker)
+        print(benzinga_search)
         html_info = requests.get(benzinga_search).text
+        print(html_info)
         soup = BeautifulSoup(html_info, 'lxml')
         news_articles = soup.find('div', class_='py-2')
+        print(news_articles)
+        '''
         # finds the header and sets it to a string
         header = news_articles.get_text()
         # adds header to header arr
@@ -116,6 +121,7 @@ class Scraper:
         article_preview = article_preview.find('p').get_text()
         article_arr = article_preview
         self.articles_info.append(article_arr)
+        '''
 
     '''
     this will fetch all the price info that is needed
