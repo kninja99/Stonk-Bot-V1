@@ -1,24 +1,3 @@
 {
-  "stock_info": [
-    {
-      "stock_ticker": "A",
-      "price": "173.59",
-      "percent_change": "+0.29 (+0.17%)",
-      "headers": [
-        "10 Must-Watch Earnings Reports",
-        "Agilent Technologies Inc. stock outperforms market on strong trading day",
-        "Hedge Fund Manager Bill Ackman Says He Exited Agilent Technologies, Calling It A 'Highly Successful Investment;' Says He Remains Committed To Finding A Merger Partner For His SPACBenzinga - 1 day ago"
-      ],
-      "articles": [
-        "In this article, we will take a look at the 10 must-watch earnings reports. You can skip our detailed analysis of these companies, and go directly to the 5 Must-Watch Earnings Reports. The second-quarter earnings season is coming to an end. While the majority of U.S. stocks surpassed expectations initially, we have witnessed mixed reports [\u2026]",
-        "Shares of Agilent Technologies Inc. \n        A,\n        +0.17%\n       inched 0.17% higher to $173.59 Thursday, on what proved to be an all-around poor trading session for the stock market, with the S&P 500 Index \n        SPX,\n        -0.58%\n       falling 0.58% to 4,470.00 and Dow Jones Industrial Average \n        DJIA,\n        -0.54%\n       falling 0.54% to 35,213.12. This was the stock's seventh consecutive day of gains. Agilent Technologies Inc. hit a new 52-week high, surpassing its previous peak of $173.54, which the company reached on August 25th. ",
-        "This headline-only article is meant to show you why a stock is moving, the most difficult aspect of stock trading. Every day we publish hundreds of headlines on any catalyst that could move the stocks you care about on Benzinga Pro, our flagship platform for fast, actionable information that promotes faster, smarter trading."
-      ],
-      "links": [
-        "https://finance.yahoo.com/news/10-must-watch-earnings-reports-133137601.html",
-        "https://www.marketwatch.com/story/agilent-technologies-inc-stock-outperforms-market-on-strong-trading-day-01630009980-16dedda62cdd?mod=mw_quote_news",
-        "https://www.benzinga.com/news/21/08/22646674/hedge-fund-manager-bill-ackman-says-he-exited-agilent-technologies-calling-it-a-highly-successful-in"
-      ]
-    }
-  ]
+  "stock_info": []
 }
