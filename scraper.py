@@ -33,7 +33,7 @@ class Scraper:
         self.stock_ticker = stock_ticker.upper()
         self.yahooScraper()
         self.marketWatchScraper()
-        self.benZingaScraper()
+        # self.benZingaScraper()
         self.fetchPriceInfo()
 
     # ---- Scraper Function Logic ----
