@@ -1,5 +1,7 @@
 # Stonk-Bot-V1
 
+built in python 3.9.5
+
 This bot will gather up to date news on designated stock tickers from common free news websites. Designed so you can stay up to date with the stocks that you are invested in
 
 CHROMIUM or CHORME is required as well as a good internet connection
